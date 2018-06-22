@@ -12,6 +12,7 @@ const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
+const history = require('connect-history-api-fallback')
 const webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
@@ -57,8 +58,12 @@ Object.keys(proxyTable).forEach(function (context) {
 })
 
 // handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
+const fallback = history({
+  disableDotRule: true,
+  htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+})
 
+app.use(fallback)
 // serve webpack bundle output
 app.use(devMiddleware)
 
