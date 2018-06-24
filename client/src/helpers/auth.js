@@ -17,8 +17,11 @@ export async function checkToken (to, from, next) {
       store.commit('CHANGE_AUTH_STATE', true)
       if (to.params.exist === 'true') {
         const user = store.state.user
-        console.log(user)
-        next('/home')
+        if (user.skills.length < 1) {
+          next('/newUserWizard')
+        } else {
+          next('/home')
+        }
       } else {
         next('/newUserWizard')
       }
