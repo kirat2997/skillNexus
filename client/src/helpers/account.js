@@ -26,3 +26,18 @@ export async function completeSignup (data) {
     }
   }
 }
+
+export async function recommend () {
+  try {
+    const response = await axios.request({
+      url: `/api/accounts/${store.state.user._id}/recommendations`,
+      headers: {'Authorization': 'Bearer ' + store.state.token},
+      method: 'get'
+    })
+    return response.data
+  } catch (e) {
+    if (e.response.status === 401) {
+      return false
+    }
+  }
+}

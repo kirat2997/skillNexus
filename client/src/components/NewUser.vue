@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
-    <v-btn v-on:click="reset">logout</v-btn>
+    <v-toolbar dark style="background: #5d91f7;">
+      <v-toolbar-title class="white--text">Skill Nexus</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="reset">
+        <v-icon>exit_to_app</v-icon>
+      </v-btn>
+    </v-toolbar>
     <v-container text-xs-center>
       <v-layout>
         <v-flex xs7>
@@ -10,7 +16,7 @@
         <v-flex xs5>
           <v-layout>
             <v-flex xs12>
-              <v-form ref="form" v-model="valid" lazy-validation color="primary">
+              <v-form ref="form" v-model="valid" lazy-validation style="color: #5d91f7;">
                 <v-text-field
                   v-model="name"
                   label="Name"
@@ -26,7 +32,6 @@
                 <v-text-field
                   v-model="roll"
                   :rules="rollRules"
-                  :counter="7"
                   label="Roll Number"
                   required
                 ></v-text-field>
@@ -54,8 +59,8 @@
                   <v-flex xs10>
                     <InputSkill v-for="i in number" :key=i ref="input"></InputSkill>
                   </v-flex>
-                  <v-icon style="cursor: pointer; bottom: 0;" v-on:click="increase" color="primary" large>add_circle_outline</v-icon>
-                  <v-icon v-if="number > 1" style="cursor: pointer; bottom: 0;" v-on:click="decrease" color="primary" large>remove_circle_outline</v-icon>
+                  <v-icon style="cursor: pointer; bottom: 0; color: #5d91f7;" v-on:click="increase" large>add_circle_outline</v-icon>
+                  <v-icon v-if="number > 1" style="cursor: pointer; bottom: 0; color: #5d91f7;" v-on:click="decrease" large>remove_circle_outline</v-icon>
                 
                 </v-layout>
                 <v-btn

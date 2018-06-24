@@ -9,7 +9,15 @@ const userSchema = new Schema({
   university: String,
   skills: [{
     name: String,
-    expertise: String
+    expertise: String,
+    level: {
+      type: Number,
+      default: 1
+    },
+    authenticated: {
+      type: Boolean,
+      default: false
+    }
   }]  
 })
 // Export Mongoose model

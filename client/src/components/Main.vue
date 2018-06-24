@@ -1,22 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <v-btn v-on:click="reset">reset</v-btn>
+    <v-btn href="/auth/google">Authenticate using Google</v-btn>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'profile',
+  name: 'main',
   data () {
     return {
-      msg: 'Welcome to PROFILE'
-    }
-  },
-  methods: {
-    reset () {
-      this.$store.commit('RESET_STATE')
-      this.$router.push('/')
+      msg: 'Welcome to Skill Nexus'
     }
   }
 }

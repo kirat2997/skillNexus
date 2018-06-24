@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Profile from '@/components/Profile'
+import Main from '@/components/Main'
 import NewUser from '@/components/NewUser'
 
 import { checkToken, shouldContinueOrNot, isAuthenticated } from '../helpers/auth'
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Main',
+      component: Main,
       beforeEnter: shouldContinueOrNot
     },
     {
@@ -22,8 +22,8 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Profile',
-      component: Profile,
+      name: 'Home',
+      component: Home,
       beforeEnter: isAuthenticated
     },
     {
